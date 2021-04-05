@@ -10,7 +10,7 @@ if (!mongodbUrl) {
   );
   return;
 }
-mongoose.createConnection(mongodbUrl, {
+mongoose.connect(mongodbUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

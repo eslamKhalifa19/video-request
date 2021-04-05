@@ -12,7 +12,7 @@
   <body>
     <div class="container my-5">
       <div class="formContainer my-5">
-        <form action="" method="POST">
+        <form id="formVideoRequest">
           <div class="row">
             <div class="col-md">
               <div class="form-group">
@@ -117,13 +117,31 @@
             <div
               class="d-flex justify-content-center flex-column 408ml-auto mr-2"
             >
-              <div class="badge badge-success">
-                Beginners
-              </div>
+              <div class="badge badge-success">Beginners</div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const formVidReq = document.getElementById("formVideoRequest");
+
+        formVidReq.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          const formData = new FormData(formVidReq);
+
+          fetch("http://localhost:7777/video-request", {
+            method: "POST",
+            body: formData,
+          })
+            .then((bold) => bold.json())
+            .then((data) => {
+              console.log(data);
+            });
+        });
+      });
+    </script>
   </body>
 </html>
